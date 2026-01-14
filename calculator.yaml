@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculator
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: calculator
+  template:
+    metadata:
+      labels:
+        app: calculator
+    spec:
+      imagePullSecrets:
+        - name: ecr-secret
+      containers:
+        - name: calculator
+          image: 316444450716.dkr.ecr.us-east-1.amazonaws.com/calculator-java:1.0.26
+          ports:
+            - containerPort: 8080
+
