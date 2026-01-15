@@ -1,18 +1,21 @@
 apiVersion: apps/v1
-kind: pod
+kind: Deployment
 metadata:
-  name: calculator
+  name: calculator-v2
 spec:
   replicas: 1
-  selector: 
+  selector:
     matchLabels:
       app: project
+  template:
+    metadata:
+      labels:
+        app: project
     spec:
+      imagePullSecrets:
+        - name: ecr-secret
       containers:
-       - name: container1
-         image: 316444450716.dkr.ecr.us-east-1.amazonaws.com/calculator-java:v1.2
-         imagePullSecrets:
-         - name: ecr-secret
-         ports:
-         - containerPort: 80
-
+        - name: container1
+          image: 316444450716.dkr.ecr.us-east-1.amazonaws.com/calculator-java:v1.2
+          ports:
+            - containerPort: 80
