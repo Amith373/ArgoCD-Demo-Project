@@ -16,6 +16,6 @@ spec:
         - name: ecr-secret
       containers:
         - name: container1
-          image: 316444450716.dkr.ecr.us-east-1.amazonaws.com/calculator-java:v1.2
+          image: 316444450716.dkr.ecr.us-east-1.amazonaws.com/calculator-java:v1.0.0
           ports:
             - containerPort: 80
